@@ -4,13 +4,11 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Hamburguer {
+public class Ingredient {
 
     @Id
     private Long id;
     private String name;
-    private String type;
-    private String descryption;
     private Double price;
     private Integer number;
 
@@ -18,7 +16,7 @@ public class Hamburguer {
         return id;
     }
 
-    public Hamburguer setId(Long id) {
+    public Ingredient setId(Long id) {
         this.id = id;
         return this;
     }
@@ -27,26 +25,8 @@ public class Hamburguer {
         return name;
     }
 
-    public Hamburguer setName(String name) {
+    public Ingredient setName(String name) {
         this.name = name;
-        return this;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public Hamburguer setType(String type) {
-        this.type = type;
-        return this;
-    }
-
-    public String getDescryption() {
-        return descryption;
-    }
-
-    public Hamburguer setDescryption(String descryption) {
-        this.descryption = descryption;
         return this;
     }
 
@@ -54,7 +34,7 @@ public class Hamburguer {
         return price;
     }
 
-    public Hamburguer setPrice(Double price) {
+    public Ingredient setPrice(Double price) {
         this.price = price;
         return this;
     }
@@ -63,7 +43,7 @@ public class Hamburguer {
         return number;
     }
 
-    public Hamburguer setNumber(Integer number) {
+    public Ingredient setNumber(Integer number) {
         this.number = number;
         return this;
     }
