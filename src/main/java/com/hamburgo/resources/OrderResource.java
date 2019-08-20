@@ -6,6 +6,7 @@ import com.hamburgo.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +25,12 @@ public class OrderResource implements OrderContrato {
     }
 
     @Override
-    public void save(@RequestBody Order order) {
-        orderService.save(order);
+    public Long save(@RequestBody Order order) {
+        return orderService.save(order).getId();
+    }
+
+    @Override
+    public void delete(@PathVariable("idOrder") Long idOrder) {
+        orderService.delete(idOrder);
     }
 }

@@ -14,5 +14,8 @@ public interface OrderContrato {
     ResponseEntity<List<Order>> findAll();
 
     @PostMapping("/save")
-    void save(@RequestBody Order order);
+    Long save(@RequestBody Order order);
+
+    @DeleteMapping("/delete/{idOrder}")
+    void delete(@PathVariable("idOrder") Long idOrder);
 }

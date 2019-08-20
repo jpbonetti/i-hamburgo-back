@@ -3,8 +3,10 @@ package com.hamburgo.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Document
-public class Hamburguer {
+public class CustomHamburguer {
 
     @Id
     private Long id;
@@ -12,12 +14,13 @@ public class Hamburguer {
     private String descryption;
     private Double price;
     private Integer number;
+    private List<Ingredient> ingredients;
 
     public Long getId() {
         return id;
     }
 
-    public Hamburguer setId(Long id) {
+    public CustomHamburguer setId(Long id) {
         this.id = id;
         return this;
     }
@@ -26,7 +29,7 @@ public class Hamburguer {
         return name;
     }
 
-    public Hamburguer setName(String name) {
+    public CustomHamburguer setName(String name) {
         this.name = name;
         return this;
     }
@@ -35,7 +38,7 @@ public class Hamburguer {
         return descryption;
     }
 
-    public Hamburguer setDescryption(String descryption) {
+    public CustomHamburguer setDescryption(String descryption) {
         this.descryption = descryption;
         return this;
     }
@@ -44,7 +47,7 @@ public class Hamburguer {
         return price;
     }
 
-    public Hamburguer setPrice(Double price) {
+    public CustomHamburguer setPrice(Double price) {
         this.price = price;
         return this;
     }
@@ -53,8 +56,17 @@ public class Hamburguer {
         return number;
     }
 
-    public Hamburguer setNumber(Integer number) {
+    public CustomHamburguer setNumber(Integer number) {
         this.number = number;
+        return this;
+    }
+
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public CustomHamburguer setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
         return this;
     }
 }
