@@ -13,12 +13,17 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.RequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.Arrays;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -48,5 +53,29 @@ public class HamburguerResourceTest {
             .andExpect(status().isOk())
             .andExpect(jsonPath("$", hasSize(1)))
             .andExpect(jsonPath("$[0].name", is("SIMPLE HAMBURGUER NAME")));
+    }
+
+    @Test
+    public void testSave() throws Exception {
+
+        RequestBuilder request = MockMvcRequestBuilders
+            .post("/hamburguer/save")
+            .accept(MediaType.APPLICATION_JSON)
+            .content("{\"id\":1,\"name\":\"SIMPLE HAMBURGUER\"}")
+            .contentType(MediaType.APPLICATION_JSON);
+
+        mvc.perform(request)
+            .andExpect(status().isOk()).andReturn();
+    }
+
+    @Test
+    public void testDelete() throws Exception {
+        Long idHamburguer = 1L;
+
+        mvc.perform(delete("/hamburguer/delete/" + idHamburguer))
+                .andExpect(status().isOk());
+
+        verify(hamburguerService, times(1))
+            .delete(idHamburguer);
     }
 }
