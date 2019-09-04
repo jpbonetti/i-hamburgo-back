@@ -1,4 +1,4 @@
-package com.hamburgo.resources;
+package com.hamburgo.resource;
 
 import com.hamburgo.contracts.HamburguerContrato;
 import com.hamburgo.model.Hamburguer;

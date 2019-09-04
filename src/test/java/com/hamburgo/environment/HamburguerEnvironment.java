@@ -20,4 +20,10 @@ public class HamburguerEnvironment {
                 .setNumber(1)
                 .setPrice(10.00);
     }
+
+    public static Hamburguer createSimpleHamburguer() {
+        return new Hamburguer()
+                .setId(1L)
+                .setName("SIMPLE HAMBURGUER NAME");
+    }
 }
