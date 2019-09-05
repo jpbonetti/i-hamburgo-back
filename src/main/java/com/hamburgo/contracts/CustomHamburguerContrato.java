@@ -14,7 +14,7 @@ public interface CustomHamburguerContrato {
     ResponseEntity<List<CustomHamburguer>> findAll();
 
     @PostMapping("/save")
-    Long save(@RequestBody CustomHamburguer customHamburguer);
+    void save(@RequestBody CustomHamburguer customHamburguer);
 
     @DeleteMapping("/delete/{idCustomHamburguer}")
     void delete(@PathVariable("idCustomHamburguer") Long idCustomHamburguer);

@@ -25,12 +25,12 @@ public class CustomHamburguerResource implements CustomHamburguerContrato {
     }
 
     @Override
-    public Long save(@RequestBody CustomHamburguer customHamburguer) {
-        return customHamburguerService.save(customHamburguer).getId();
+    public void save(@RequestBody CustomHamburguer customHamburguer) {
+        customHamburguerService.save(customHamburguer);
     }
 
     @Override
-    public void delete(@PathVariable("idOrder") Long idCustomHamburguer) {
+    public void delete(@PathVariable("idCustomHamburguer") Long idCustomHamburguer) {
         customHamburguerService.delete(idCustomHamburguer);
     }
 }
